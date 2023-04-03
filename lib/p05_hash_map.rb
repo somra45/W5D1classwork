@@ -9,6 +9,8 @@ class HashMap
   end
 
   def include?(key)
+    return true if self.bucket(key) != nil
+    false
   end
 
   def set(key, val)
@@ -44,6 +46,10 @@ class HashMap
   end
 
   def bucket(key)
+    @store.each do |list|
+      return list if list.include?(key)
+    end
+    nil
     # optional but useful; return the bucket corresponding to `key`
   end
 end
